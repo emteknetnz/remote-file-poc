@@ -6,6 +6,7 @@
 	</article>
 
 	<% if $MyRemoteFile %>
+		<a href="$MyRemoteFile.AbsoluteLink">$MyRemoteFile.AbsoluteLink</a><br>
 		<img src="$MyRemoteFile.AbsoluteLink">
 	<% end_if %>
 </div>
