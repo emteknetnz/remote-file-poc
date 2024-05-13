@@ -12,7 +12,13 @@ class RemoteFile extends DataObject
         'LastEdited' => 'Datetime',
     ];
 
+    // This is required so that the SearchableDropdownField searches on the correct field
     private static $searchable_fields = [
         'AbsoluteLink',
     ];
+
+    public function canCreate($member = null, $context = [])
+    {
+        return true;
+    }
 }

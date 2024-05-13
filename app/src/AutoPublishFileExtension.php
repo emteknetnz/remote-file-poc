@@ -50,7 +50,7 @@ class AutoPublishFileExtension extends Extension
         $headers = [];
         if ($access === RestApiEndpoint::API_TOKEN_AUTHENTICATION) {
             // you'll need to put the actual API token in here
-            $headers = ['x-api-token' => 'UP56<Gr1YW:]F4%9=Rxb/+o15ipR9f[r'];
+            $headers = ['x-api-token' => 'my-api-token'];
             // set session to empty so the current user is not used
             $session = [];
         }

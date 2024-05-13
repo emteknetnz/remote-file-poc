@@ -13,7 +13,7 @@ class CreateRemoteFilesTask extends BuildTask
             $leftPaddedI = str_pad($i, 6, '0', STR_PAD_LEFT);
             RemoteFile::create([
                 'Title' => 'Remote file ' . $leftPaddedI,
-                'AbsoluteLink' => 'https://www.example.com/remote-file-' . $leftPaddedI,
+                'AbsoluteLink' => 'https://www.example.com/remote-file-' . $leftPaddedI . '.pdf',
             ])->write();
             echo "Created file $leftPaddedI\n";
         }
