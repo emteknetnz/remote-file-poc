@@ -3,6 +3,7 @@
 use SilverStripe\Core\Extension;
 use SilverStripe\Control\Director;
 use SilverStripe\Control\Controller;
+use emteknetnz\RestApi\Controllers\RestApiEndpoint;
 
 class AutoPublishFileExtension extends Extension
 {
@@ -45,7 +46,15 @@ class AutoPublishFileExtension extends Extension
         }
         // send a request to the same server for test purposes, normally you'd use curl or guzzle
         $session = Controller::curr()->getRequest()->getSession();
-        Director::test('/api/remote-file', [], $session, 'POST', $body);
+        $access = MainSiteFileEndpoint::config()->get('api_config')[RestApiEndpoint::ACCESS];
+        $headers = [];
+        if ($access === RestApiEndpoint::API_TOKEN_AUTHENTICATION) {
+            // you'll need to put the actual API token in here
+            $headers = ['x-api-token' => 'UP56<Gr1YW:]F4%9=Rxb/+o15ipR9f[r'];
+            // set session to empty so the current user is not used
+            $session = [];
+        }
+        Director::test('/api/remote-file', [], $session, 'POST', $body, $headers);
         self::$remoteFilesHahes[$hash] = true;
     }
 
